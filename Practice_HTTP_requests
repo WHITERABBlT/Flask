@@ -1,3 +1,37 @@
+"""
+Flask API for managing a list of people.
+
+This application provides several endpoints to demonstrate common RESTful patterns, including:
+- Returning test responses
+- Fetching dataset metadata
+- Searching by name
+- Counting records
+- Retrieving, adding, and deleting persons by UUID
+- Custom error handling for 404 and unexpected exceptions
+
+Endpoints:
+- `/` → Root endpoint with a test message.
+- `/no_content` → Returns a 204 No Content response with a message.
+- `/exp` → Explicitly sets and returns HTTP 200 status code with a message.
+- `/data` → Returns the size of the dataset or an error message.
+- `/name_search?q=<query>` → Searches for a person by first name substring.
+- `/count` → Returns the number of records in the dataset.
+- `/person/<var_name>` → Retrieves a person by ID (UUID).
+- `/person/<uuid:var_name>` [DELETE] → Deletes a person by UUID.
+- `/person` [POST] → Adds a new person via JSON payload.
+- `/test500` → Forces a 500 Internal Server Error for testing purposes.
+
+Error Handlers:
+- 404 Not Found → Returns a JSON message.
+- Generic Exception → Returns the error message with a 500 status.
+
+Data:
+A sample in-memory list of dictionaries, each representing a person with fields
+like `id`, `first_name`, `last_name`, `graduation_year`, `address`, `city`, `zip`, `country`, and `avatar`.
+
+Note: This app uses in-memory storage for demonstration and testing purposes.
+"""
+
 # Import the Flask class from the flask module
 from flask import Flask, make_response, request
 
